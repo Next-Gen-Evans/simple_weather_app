@@ -13,9 +13,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  final _weatherService = WeatherService(
-    apiKey: 'b1c07879b832e52b4fc81b7de62b0f70',
-  );
+  final _weatherService = WeatherService(apiKey: 'process.env.apiKey');
   Weather? _weather;
   bool _isLoading = true;
   String? _error;
@@ -115,91 +113,100 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   style: const TextStyle(fontSize: 18, color: Colors.redAccent),
                 ),
               )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Row: Greeting + Theme toggle
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _getGreetings(),
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          themeProvider.toggleTheme();
-                        },
-                        icon: Icon(
-                          themeProvider.isDarkMode
-                              ? Icons.wb_sunny_outlined
-                              : Icons.nightlight_round,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 100),
-
-                  // City
-                  Center(
-                    child: Column(
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Greeting + Theme Toggle (overflow-safe)
+                    Row(
                       children: [
-                        Icon(
-                          Icons.location_on_rounded,
-                          size: 30,
-                          color: Colors.grey.shade500,
+                        Expanded(
+                          child: Text(
+                            _getGreetings(),
+                            style: const TextStyle(
+                              fontSize: 24,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                        Text(
-                          _weather!.cityName,
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
+                        const SizedBox(width: 10),
+                        IconButton(
+                          onPressed: () {
+                            themeProvider.toggleTheme();
+                          },
+                          icon: Icon(
+                            themeProvider.isDarkMode
+                                ? Icons.wb_sunny_outlined
+                                : Icons.nightlight_round,
+                            color: Colors.grey[700],
                           ),
                         ),
                       ],
                     ),
-                  ),
 
-                  const SizedBox(height: 30),
+                    const SizedBox(height: 100),
 
-                  // Animation
-                  Center(
-                    child: Lottie.asset(
-                      getWeatherAnimations(
-                        mainCondition: _weather!.mainCondition,
-                        iconCode: _weather!.iconCode,
-                        cloudPercent: _weather!.cloudPercentage,
+                    // City
+                    Center(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.location_on_rounded,
+                            size: 30,
+                            color: Colors.grey.shade500,
+                          ),
+                          Text(
+                            _weather!.cityName,
+                            style: const TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                     ),
-                  ),
 
-                  const SizedBox(height: 70),
+                    const SizedBox(height: 30),
 
-                  // Temperature
-                  Center(
-                    child: Text(
-                      '${_weather!.temperature.round()}℃',
-                      style: const TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-
-                  // Condition
-                  Center(
-                    child: Text(
-                      _weather!.mainCondition,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                    // Weather Animation
+                    Center(
+                      child: Lottie.asset(
+                        getWeatherAnimations(
+                          mainCondition: _weather!.mainCondition,
+                          iconCode: _weather!.iconCode,
+                          cloudPercent: _weather!.cloudPercentage,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+
+                    const SizedBox(height: 70),
+
+                    // Temperature
+                    Center(
+                      child: Text(
+                        '${_weather!.temperature.round()}℃',
+                        style: const TextStyle(fontSize: 40),
+                      ),
+                    ),
+
+                    const SizedBox(height: 10),
+
+                    // Condition
+                    Center(
+                      child: Text(
+                        _weather!.mainCondition,
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
       ),
     );
