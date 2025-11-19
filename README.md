@@ -72,3 +72,21 @@ lib/
 
 ## 📸 Screenshots
 ![The image of the site](<WhatsApp Image 2025-11-18 at 19.16.56_e2e05ac9-1.jpg>)
+
+---
+
+## 🔮 Future Improvements
+🌍 Dark mode
+👀 Rain + UV index indicators
+🗺️ Weather map
+🔔 Alerts for storms / extreme weather
+
+---
+## 👨‍💻 Author
+Evans Mutharimi Buongo
+Passionate developer & tech innovator from Kenya
+
+---
+
+## 📜 License
+MIT License – feel free to use and modify.
