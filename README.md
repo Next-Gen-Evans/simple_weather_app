@@ -90,3 +90,11 @@ Passionate developer & tech innovator from Kenya
 
 ## 📜 License
 MIT License – feel free to use and modify.
+
+---
+
+If you found this helpful, give it a ⭐!
+
+<div align="center">
+
+### 🌟 **Thanks for Visiting!** 🌟
