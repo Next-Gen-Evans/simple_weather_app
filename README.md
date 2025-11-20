@@ -89,7 +89,3 @@ Passionate developer & tech innovator from Kenya
 ---
 
 If you found this helpful, give it a ⭐!
-
-<div align="center">
-
-### 🌟 **Thanks for Visiting!** 🌟
