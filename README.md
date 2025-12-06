@@ -57,6 +57,7 @@ flutter run
 ---
 
 ## 📁 Folder Structure
+```
 lib/
  ├── main.dart
  ├── screens/
@@ -67,6 +68,7 @@ lib/
  ├── widgets/
  │    ├── weather_card.dart
  │    ├── forecast_item.dart
+```
 
 ---
 
