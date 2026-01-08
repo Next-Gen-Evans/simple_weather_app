@@ -1,5 +1,6 @@
 # 🌦️ Weather Forecast App
 
+
 A simple and elegant Flutter weather application that displays real-time weather conditions and forecasts based on the user’s current location. The app uses a clean UI and integrates with a weather API to deliver accurate temperature, humidity, wind, and forecast data.
 
 ---
